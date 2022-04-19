@@ -81,6 +81,9 @@ else
      EXTENSION=l_i386
    fi
    ;;
+ FreeBSD)
+   EXTENSION=pd_freebsd
+   ;;
  *CYGWIN*)
    EXTENSION=dll
    ;;

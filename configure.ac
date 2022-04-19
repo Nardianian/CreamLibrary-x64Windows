@@ -30,7 +30,7 @@ AC_PROG_CXX
 AC_PROG_LIBTOOL
 
 if test "x${libdir}" = "x\${exec_prefix}/lib"; then
- libdir='${exec_prefix}/lib/pd/extra'
+ libdir='${exec_prefix}/lib/pd-externals'
 fi
 
 if test "x$with_pd" != "x"; then

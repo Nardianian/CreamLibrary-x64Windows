@@ -34,34 +34,40 @@ if test "x${libdir}" = "x\${exec_prefix}/lib"; then
 fi
 
 if test "x$with_pd" != "x"; then
- if test -d "${with_pd}"; then
-   PDPATH=${with_pd}
- fi
- if test -d "${PDPATH}/src"; then
-  AC_MSG_RESULT([adding ${PDPATH}/src to INCLUDES])
-  PD_CPPFLAGS="-I${PDPATH}/src ${CPPFLAGS}"
+  if test -d "${with_pd}"; then
+    PDPATH=${with_pd}
+  fi
+  if test -d "${PDPATH}/src"; then
+    AC_MSG_RESULT([adding ${PDPATH}/src to INCLUDES])
+    PD_CPPFLAGS="-I${PDPATH}/src ${CPPFLAGS}"
 
-  AC_MSG_RESULT([adding ${PDPATH}/src to LDFLAGS])
-  PD_LDFLAGS="-L${PDPATH}/src ${LDFLAGS}"
- else
-  if test -d "${PDPATH}"; then
-   AC_MSG_RESULT([adding ${PDPATH} to INCLUDES])
-   PD_CPPFLAGS="-I${PDPATH} ${CPPFLAGS}"
+    AC_MSG_RESULT([adding ${PDPATH}/src to LDFLAGS])
+    PD_LDFLAGS="-L${PDPATH}/src ${LDFLAGS}"
+  else
+    if test -d "${PDPATH}"; then
+      AC_MSG_RESULT([adding ${PDPATH} to INCLUDES])
+      PD_CPPFLAGS="-I${PDPATH} ${CPPFLAGS}"
+    fi
   fi
- fi
- if test -d "${PDPATH}/bin"; then
-  AC_MSG_RESULT([adding ${PDPATH}/bin to LDFLAGS])
-  PD_LDFLAGS="-L${PDPATH}/bin ${LDFLAGS}"
- else
-  if test -d "${PDPATH}"; then
-   AC_MSG_RESULT([adding ${PDPATH} to LDFLAGS])
-   PD_LDFLAGS="-L${PDPATH} ${LDFLAGS}"
+  if test -d "${PDPATH}/bin"; then
+    AC_MSG_RESULT([adding ${PDPATH}/bin to LDFLAGS])
+    PD_LDFLAGS="-L${PDPATH}/bin ${LDFLAGS}"
+  else
+    if test -d "${PDPATH}"; then
+      AC_MSG_RESULT([adding ${PDPATH} to LDFLAGS])
+      PD_LDFLAGS="-L${prefix}/lib ${LDFLAGS}"
+    fi
   fi
- fi
-else 
+  PD_CPPFLAGS_=`pkg-config --cflags pd`
+  PD_CPPFLAGS="${PD_CPPFLAGS} ${PD_CPPFLAGS_}"
+  PD_LDFLAGS_=`pkg-config --libs pd`
+  PD_LDFLAGS="${PD_LDFLAGS} ${PD_LDFLAGS_}"
+else
   AC_MSG_RESULT([no pd path given, trying with pkg-config data])
   PD_CPPFLAGS=`pkg-config --cflags pd`
+  PD_CPPFLAGS="${PD_CPPFLAGS} -I${prefix}/include"
   PD_LDFLAGS=`pkg-config --libs pd`
+  PD_LDFLAGS="${PD_LDFLAGS} -L${prefix}/lib"
 fi
 
 AC_MSG_CHECKING([extension])

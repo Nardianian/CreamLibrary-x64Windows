@@ -14,10 +14,11 @@ This CreamLibrary fork starts from Timothy Beyer's fork, which 3 years ago updat
  The build was conducted on Windows 11 Home with Pure Data v0.56.1 and MSYS2 MINGW64.
 Some adjustments have been made to the original source code to bring it from Win32 to x64 (e.g. replaced long with intptr_t ; for Casting pointers to int used intptr_t or uintptr_t from <stdin t.h>), on "eclass.c" from CicmWrapper code was added to the top of the file << #include "m_pd.h" >> and << #include <stdint.h>, rewritten the "Makefile.am" files both Cream and CicmWrapper, etc...).  
  In MSYS2 MINGW64 make sure you have:
-  - pacman -Syu # upgrade MSYS2 pacman -S base-devel # make, automake, autoconf, libtool
+  - pacman -Syu # upgrade MSYS2 pacman -S base-devel
+  - pacman -Syu pacman -S autoconf automake libtool m4 pkgconf make gcc
   - pacman -S mingw-w64-x86_64-toolchain pacman -S pkg-config # useful for pd
 
-Build CicmWrapper first, then make sure to link Cream to "libCicmWrapper.a" with the correct directory, then when building both CicmWrapper (static) and Cream (force it to dynamic) always on MSYS2 MINGW64 communicate the correct directories of your Pure Data installation path, e.g.
+Build CicmWrapper first, then build "libpd.dll.a" on your PureData\bin folder and make sure to link Cream to "libCicmWrapper.a" with the correct directory, then when building both CicmWrapper (static) and Cream (force it to dynamic) always on MSYS2 MINGW64 communicate the correct directories of your Pure Data installation path, e.g.
   -  << make clean  ./autogen.sh ./configure --with-pd=</c/path-to-PureData> --with-extension=dll make  >>
 
 # Original Readme:

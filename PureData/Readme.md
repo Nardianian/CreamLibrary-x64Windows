@@ -13,6 +13,7 @@ To create the "pd.pc" file, open a text file and paste this content:
 
 To create the static library "libpd.dll.a" for MinGW you can easily derive it from "pd.dll" with the MSYS2 binutils tools, from Mingw64 run:
    -  cd /c/PureData/bin gendef pd.dll dlltool -d pd.def -l libpd.dll.a -D pd.dll
+
  Now in the PureData\bin folder you will have:
    -  pd.dll
    -  pd.lib      (MSVC import lib (not used by MinGW)    

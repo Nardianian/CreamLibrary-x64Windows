@@ -1,8 +1,8 @@
 ## About this fork
 Cream Library is a library of externals for Pure Data developed 10 years ago by the CICM team (Centre de recherche en informatique et création musica of the Musidansa department of the University of Paris 8) 
-  [https://musidanse.univ-paris8.fr/centre-de-recherche-en-informatique-et-creation-musicale-cicm?lang=fr]
+  - [https://musidanse.univ-paris8.fr/centre-de-recherche-en-informatique-et-creation-musicale-cicm?lang=fr]
 developers Pierre Guillot, Eliott Paris, Julien Colafrancesco. The library is also useful if not necessary for using the HOA externals spatialization library dating back to around 2015 but perhaps some more recent updates can be found online
-  [https://cicm.univ-paris8.fr/index.html]
+  - [https://cicm.univ-paris8.fr/index.html]
 This CreamLibrary fork starts from Timothy Beyer's fork, which 3 years ago updated some parts of the code, to make it fully compatible with Windows x64.
 
 Included in the repo are both the final dll of the external ready for PD and the static library with the .a extension of CicmWrapper ready to be linked to the Cream code if you want to build it but if you want to compile from source code it is recommended to redo the build of CicmWrapper too (you should get "libCicmWrapper.a").

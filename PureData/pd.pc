@@ -1,0 +1,10 @@
+prefix=/c/PureData
+exec_prefix=${prefix}
+libdir=${prefix}/bin
+includedir=${prefix}/src
+
+Name: Pure Data
+Description: Pure Data core headers and libraries
+Version: 0.54
+Libs: -L${libdir} -lpd
+Cflags: -I${includedir}

@@ -1,3 +1,16 @@
+## About this fork
+Cream Library is a library of externals for Pure Data developed 10 years ago by the CICM team (Centre de recherche en informatique et création musica of the Musidansa department of the University of Paris 8) [https://musidanse.univ-paris8.fr/centre-de-recherche-en-informatique-et-creation-musicale-cicm?lang=fr]
+developers Pierre Guillot, Eliott Paris, Julien Colafrancesco. The library is also useful if not necessary for using the HOA externals spatialization library dating back to around 2015 but perhaps some more recent updates can be found online.
+This CreamLibrary fork starts from Timothy Beyer's fork, which 3 years ago updated some parts of the code, to make it fully compatible with Windows x64.
+Included in the repo are both the final dll of the external ready for PD and the static library with the .a extension of CicmWrapper ready to be linked to the Cream code if you want to build it but if you want to compile from source code it is recommended to redo the build of CicmWrapper too (you should get "libCicmWrapper.a").
+The build was conducted on Windows 11 Home with MSYS2 MINGW64.
+Some adjustments have been made to the code to bring it from Win32 to x64 (e.g. replaced long with intptr_t ; for Casting pointers to int used intptr_t or uintptr_t from <stdin t.h>), rewritten the Makefile.am files of Cream and CicmWrapper, etc...   In MSYS2 MINGW64 make sure you have:
+ pacman -Syu # upgrade MSYS2 pacman -S base-devel # make, automake, autoconf, libtool
+ pacman -S mingw-w64-x86_64-toolchain pacman -S pkg-config # useful for pd
+Build CicmWrapper first, then make sure to link Cream to libCicmWrapper.a with the correct directory, then when building both CicmWrapper (static) and Cream (dynamic) always on MSYS2 MINGW64 communicate the correct directories of your Pure Data installation path, e.g.  ./configure --with-pd=/c/PureData make
+
+# Original Readme:
+
 ## [Cream Library](http://www.mshparisnord.fr/hoalibrary/en/publications/ "Publication") for Pure Data
 
 A set of PD externals for those who like vanilla... but also want some chocolate cream.  

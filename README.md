@@ -17,7 +17,7 @@ Some adjustments have been made to the original source code to bring it from Win
   - pacman -Syu # upgrade MSYS2 pacman -S base-devel # make, automake, autoconf, libtool
   - pacman -S mingw-w64-x86_64-toolchain pacman -S pkg-config # useful for pd
 
-Build CicmWrapper first, then make sure to link Cream to libCicmWrapper.a with the correct directory, then when building both CicmWrapper (static) and Cream (dynamic) always on MSYS2 MINGW64 communicate the correct directories of your Pure Data installation path, e.g.
+Build CicmWrapper first, then make sure to link Cream to "libCicmWrapper.a" with the correct directory, then when building both CicmWrapper (static) and Cream (force it to dynamic) always on MSYS2 MINGW64 communicate the correct directories of your Pure Data installation path, e.g.
   -  << make clean  ./autogen.sh ./configure --with-pd=</c/path-to-PureData> --with-extension=dll make  >>
 
 # Original Readme:

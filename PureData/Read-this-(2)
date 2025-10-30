@@ -1,0 +1,1 @@
+Before building Cream you should create the library file "libpd.dll.a" on your Pure Data installation directory and more precisely on the "bin" sub-folder.

@@ -1,0 +1,1 @@
+If you want latest CicmWrapper source code but not configured with this fork clone it from: https://github.com/beyert/CicmWrapper.git

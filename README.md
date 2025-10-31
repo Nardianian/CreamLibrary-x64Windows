@@ -10,6 +10,12 @@ The library is also useful if not necessary for using the HOA externals spatiali
 This CreamLibrary fork starts from Timothy Beyer's fork, which 3 years ago updated some parts of the code, to make it fully compatible with Windows x64.
 
  Included in the repo are both the final dll of the external ready for PD and the static library with the .a extension of CicmWrapper ready to be linked to the Cream code if you want to build it but if you want to compile from source code it is recommended to redo the build of CicmWrapper too (you should get "libCicmWrapper.a").
+ Make sure libCicmWrapper.a is visible to the linker. You can pass the paths in Mingw64 runnin' like this:
+ 
+ -  export LDFLAGS="-L/c/Users/capoc/Repos/CreamLibrary/ThirdParty/CicmWrapper" export
+ -  CPPFLAGS="-I/c/Users/capoc/Repos/CreamLibrary/ThirdParty/CicmWrapper/Sources"
+ 
+ Then do the build
 
  The build was conducted on Windows 11 Home with Pure Data v0.56.1 and MSYS2 MINGW64.
 Some adjustments have been made to the original source code to bring it from Win32 to x64 (e.g. replaced long with intptr_t ; for Casting pointers to int used intptr_t or uintptr_t from <stdin t.h>), on "eclass.c" from CicmWrapper code was added to the top of the file << #include "m_pd.h" >> and << #include <stdint.h>, rewritten the "Makefile.am" files both Cream and CicmWrapper, etc...).  
@@ -18,8 +24,10 @@ Some adjustments have been made to the original source code to bring it from Win
   - pacman -Syu pacman -S autoconf automake libtool m4 pkgconf make gcc
   - pacman -S mingw-w64-x86_64-toolchain pacman -S pkg-config # useful for pd
 
-Build CicmWrapper first, then build "libpd.dll.a" on your PureData\bin folder and make sure to link Cream to "libCicmWrapper.a" with the correct directory, then when building both CicmWrapper (static) and Cream (force it to dynamic) always on MSYS2 MINGW64 communicate the correct directories of your Pure Data installation path, e.g.
+Build CicmWrapper first, then build "libpd.dll.a" on your PureData\bin folder and make sure to link Cream to "libCicmWrapper.a" with the correct directory, then when building both CicmWrapper (static) and Cream (force it to dynamic with < --enable-shared --disable-static >) always on MSYS2 MINGW64 communicate the correct directories of your Pure Data installation path, e.g.
   -  << make clean  ./autogen.sh ./configure --with-pd=</c/path-to-PureData> --with-extension=dll make  >>
+
+Check the correspondence with your directories in the files, in particular in the "Makefile.am" and "configure.ac"
 
 # Original Readme:
 

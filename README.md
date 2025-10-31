@@ -18,7 +18,7 @@ This CreamLibrary fork starts from Timothy Beyer's fork, which 3 years ago updat
  Then do the build
 
  The build was conducted on Windows 11 Home with Pure Data v0.56.1 and MSYS2 MINGW64.
-Some adjustments have been made to the original source code to bring it from Win32 to x64 (e.g. replaced long with intptr_t ; for Casting pointers to int used intptr_t or uintptr_t from <stdin t.h>), on "eclass.c" from CicmWrapper code was added to the top of the file << #include "m_pd.h" >> and << #include <stdint.h>, rewritten the "Makefile.am" files both Cream and CicmWrapper, etc...).  
+Some adjustments have been made to the original source code to bring it from Win32 to x64 (e.g. replaced long with intptr_t ; for Casting pointers to int used intptr_t or uintptr_t from <stdin t.h>), on "eclass.c" from CicmWrapper code was added to the top of the file << #include "m_pd.h" >> and << #include <stdint.h> >>, rewritten the "Makefile.am" files both Cream and CicmWrapper, etc...).  
  In MSYS2 MINGW64 make sure you have:
   - pacman -Syu # upgrade MSYS2 pacman -S base-devel
   - pacman -Syu pacman -S autoconf automake libtool m4 pkgconf make gcc

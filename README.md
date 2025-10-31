@@ -1,5 +1,5 @@
 ## About this fork
-Cream Library is a library of externals for Pure Data developed 10 years ago by the CICM team (Centre de recherche en informatique et création musica of the Musidansa department of the University of Paris 8) 
+Cream Library is a library of externals for Pure Data developed 10 years ago by the CICM team (Centre de recherche en informatique et création musica of the Musidanse department of the University of Paris 8) 
   - [https://musidanse.univ-paris8.fr/centre-de-recherche-en-informatique-et-creation-musicale-cicm?lang=fr]
 
 developers Pierre Guillot, Eliott Paris, Julien Colafrancesco.

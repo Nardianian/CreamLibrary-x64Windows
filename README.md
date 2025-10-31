@@ -24,8 +24,11 @@ Some adjustments have been made to the original source code to bring it from Win
   - pacman -Syu pacman -S autoconf automake libtool m4 pkgconf make gcc
   - pacman -S mingw-w64-x86_64-toolchain pacman -S pkg-config # useful for pd
 
-Build CicmWrapper first, then build "libpd.dll.a" on your PureData\bin folder and make sure to link Cream to "libCicmWrapper.a" with the correct directory, then when building both CicmWrapper (static) and Cream (force it to dynamic with < --enable-shared --disable-static >) always on MSYS2 MINGW64 communicate the correct directories of your Pure Data installation path, e.g.
-  -  << make clean  ./autogen.sh ./configure --with-pd=</c/your-path-to-PureData> --with-extension=dll --enable-shared --disable-static make  >>
+Build CicmWrapper first, then build "libpd.dll.a" on your PureData\bin folder and make sure to link Cream to "libCicmWrapper.a" with the correct directory, then when building both CicmWrapper (static) and Cream (force it to dynamic with < --enable-shared --disable-static >) always on MSYS2 MINGW64 communicate the correct directories of your Pure Data installation path, eg.
+To build CicmWrapper:
+  -  ./autogen.sh ./configure --with-pd=</c/your-PureData-install-path> make
+To build Cream:
+  -  make clean  ./autogen.sh ./configure --with-pd=</c/your-path-to-PureData> --with-extension=dll --enable-shared --disable-static make
 
 Check the correspondence with your directories in the files, in particular in the "Makefile.am" and "configure.ac"
 
